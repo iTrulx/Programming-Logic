@@ -1,0 +1,35 @@
+// Initializes the program "Dimensions"
+PROGRAM DIMENSIONS
+    // Reserves space in the memory for integers and strings
+    DECLARE Integer boxesCalculated, row;
+    DECLARE String widthColumn, lengthColumn, heightColumn;
+    // Sets the values for the reserved integers and stings
+    SET boxesCalculated = 0;
+    SET widthColumn = B;
+    SET lengthColumn = C;
+    SET heightColumn= D;
+    SET row = 2;
+    // Combines the column strings with the row integer to specify the box location
+    SET widthPosition = widthColumntrow;
+    SET lengthPosition = lengthColumn+row;
+    SET heightPosition = heightColumn+row;
+    // Initializes a while loop that calculates the volume of boxes if the correct file exists and less than 6 boxes have been calculated
+    WHILE boxesCalculated < 6 and "dimensions.xml" exists;
+        OPEN "dimensions.xml";
+        READ widthPosition;
+        READ lengthPosition;
+        READ heightPosition;
+        CLOSE "dimensions.xml";
+        // Calculates the volume of the boxes
+        SET boxVolume = widthPosition * lengthPosition * heightPosition;
+        // Adds 1 value to the string so the while loop can end when the required calculations are complete
+        SET boxesCalculated +1;
+        // Adds 1 value to the row integer so the program knows where the next box is stored in the excel document
+        SET row +1;
+        // Displays the volume of the calculated box
+        DISPLAY "The volume of the box is [boxVolume] cm cubed.";
+    ENDWHILE
+    ELSE
+        DISPLAY "File not found"
+    END
+END
