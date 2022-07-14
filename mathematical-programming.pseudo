@@ -1,0 +1,16 @@
+// Initialized the program "Property Tax"
+PROGRAM PROPERTY_TAX
+    // Reserves space in the memory for integers
+    DECLARE Integer propertyFullValue, propertyLiableTax, propertyTax;
+    // Asks the user to input the total value of their property
+    DISPLAY "Please input the total value of your property: ";
+    // Records the users input
+    GET propertyFullValue;
+    // Calculates the property liable tax by getting the total property value and dividing it by 100 then multiplying by 30
+    SET propertyLiableTax = propertyFullvalue/100*30;
+    // Calculates the charged property tax by dividing the liable tax by 100 and multiplying by 4.6 to get the billed 4.6% tax
+    SET propertyTax = propertyLiableTax/100*4.6;
+    // Displays the total liable and billed tax
+    DISPLAY "The amount liable for tax on your empty property is £[propertyLiableTax].";
+    DISPLAY "The tax due on your empty propert is £[propertyTax].";
+END
