@@ -1,0 +1,91 @@
+// Initializes the program named "Insurance"
+PROGRAM INSURANCE
+    // Reserves memory space for integers and booleans
+    DECLARE Integer insuranceCost, discountPoints, premiumDiscount, premiumDeduction, insuranceVAT;
+    DECLARE Boolean burglarAlarm, window locks, windowBars, oneOffPayment; 
+    // Sets the base insurance cost of £50 
+    SET insuranceCost = 50; 
+    // Asks the user if they have a burglar alarm installed 
+    DISPLAY "Does your home have a Burglar Alarm installed?"; 
+    // Records the users input 
+    GET burglarAlarm;
+    // Triggers an IF statement which adds 1 discount point if a burglar alarm is installed 
+    IF burglarAlarm == true;
+        SET discountPoints +1; 
+    END 
+    // Triggers an IF statement which doesn't add discount points 
+    IF burglarAlarm == false;
+        SET discountPoints +0; 
+    END 
+    // Asks the user is they have window locks installed
+    DISPLAY "Does your home have window locks installed?"; 
+    // Records the users input 
+    GET windowLocks;
+    // Triggers an IF statement which adds 10 discount points if a window lock is installed
+    IF windowLocks == true;
+        SET discountPoints +10; 
+    END 
+    // Triggers an IF statement which doesn't add discount points 
+    IF windowLocks == false;
+        SET discountPoints +0; 
+    END 
+    // Asks the user if they have window bars installed 
+    DISPLAY "Does your home have window bars installed?"; 
+    // Records the users input 
+    Get windowBars; 
+    // Triggers and IF statement which adds 100 discount points 
+    IF windowBars == true;
+        SET discountPoints +100; 
+    END 
+    // Triggers an IF statement which doesn't add discount points 
+    IF windowBars == false;
+        SET discountPoints +0; 
+    END 
+    // Get's the data stored to premiumDiscount 
+    GET premiumDiscount;
+    // Triggers IF statements to calculate the eligable discount the client has 
+    IF discountPoints == 0;
+        SET premiumDiscount = 0; 
+    END 
+    IF discountPoints == 1;
+        SET premiumDiscount == 2.5; 
+    END 
+    IF discountPoints == 10;
+        SET premiumDiscount == 1; 
+    END 
+    IF discountPoints == 11;
+        SET premiumDiscount == 3.5; 
+    END 
+    IF discountPoints == 100;
+        SET premiumDiscount == 2; 
+    END 
+    IF discountPoints == 101;
+        SET premiumDiscount == 4.5; 
+    END 
+    IF discountPoints == 110;
+        SET premiumDiscount == 3;
+    END
+    IF discountPoints == 111;
+        SET premiumDiscount == 5.5; 
+    END
+    // Calculates the premium percentage to remove from the base price before VAT
+    SET premiumDeduction = insuranceCost/100*premiumDiscount 
+    // Updates the insuranceCost to include any eligable discounts 
+    SET insuranceCost = insuranceCost-premiumDeduction 
+    // Add payment options and deduction 
+    DISPLAY "Would you like a one-off payment?"; 
+    GET oneOffPayment;
+    // Adds a further 2% deduction if the insurance if paid with a one-off payment 
+    IF oneOffPayment == true;
+        SET insuranceCost = insuranceCost*0.98; 
+    END 
+    ELSE
+        SET insuranceCost = insuranceCost; 
+    END 
+    // Calculates 20% VAT 
+    SET insuranceVAT = insuranceCost/100*20 
+    // Adds 20% VAT to the insurance cost 
+    SET insuranceCost = insuranceCost+insuranceVAT 
+    // Displays the home insurance premium
+    DISPLAY "Your calculated home insurance premium is £[insuranceCost]." 
+END     
