@@ -1,0 +1,35 @@
+// Initializes the program named "Library" 
+PROGRAM LIBRARY
+    // Reserves the memory space for the declared integers 
+    DECLARE Integer hyphenatedISBN[], unhypenatedISBN[], storedISBN[]; 
+    // Sets the unhypenatedISBN to have an array lenght of 13 
+    SET unhyphenatedISBN[] = 0000000000000; 
+    // Asks the user to input their 13-digit hyphenatedISBN 
+    DISPLAY "Please enter your 13-digit hyphenated ISBN: "; 
+    // Records the users inputted ISBN 
+    GET hyphenatedISBN[];
+    // Matches the position of the 13 digits in the hyphenatedISBN array to match with the unhyphenatedISBN array
+    SET unhyphenatedISBN[0] = hyphenatedISBN[0]; 
+    SET unhyphenatedISBN[1] = hyphenatedISBN[1]; 
+    SET unhyphenatedISBN[2] = hyphenatedISBN[2]; 
+    SET unhyphenatedISBN[4] = hyphenatedISBN[4];
+    SET unhyphenatedISBN[6] = hyphenatedISBN[6]; 
+    SET unhyphenatedISBN[7] = hyphenatedISBN[7]; 
+    SET unhyphenatedISBN[9] = hyphenatedISBN[9]; 
+    SET unhyphenatedISBN[10] = hyphenatedISBN[10]; 
+    SET unhyphenatedISBN[11] = hyphenatedISBN[11]; 
+    SET unhyphenatedISBN[12] = hyphenatedISBN[12]; 
+    SET unhyphenatedISBN[13] = hyphenatedISBN[13]; 
+    SET unhyphenatedISBN[14] = hyphenatedISBN[14]; 
+    SET unhyphenatedISBN[14] = hyphenatedISBN[16]; 
+    GET unhypenatedISBN[];
+    // Checks if the entered ISBN matches any of the stored ISBNs in the library 
+    IF unhypenatedISBN[] == storedISBN[];
+        DISPLAY "Your book, [hyphenatedISBN], has been found."; 
+    END 
+    ELSE
+        DISPLAY "Your book, [hyphenatedISBN], has not been found."; 
+    END
+END
+    
+    
